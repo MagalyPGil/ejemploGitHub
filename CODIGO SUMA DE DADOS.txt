@@ -1,0 +1,126 @@
+  
+  
+  
+private int num1=0;
+   private int num2=0;
+   private double saldoInicial;
+   private double totalApostar;
+   private int dado1; 
+   private int dado2;
+   private int suma;
+   private double gano=0;
+   private double perdio=0;
+   private double saldoActual;
+   //CREAR CONSTRUCTOR
+   public Dados()
+   {
+       num1=0;
+       num2=0;
+       saldoInicial=0.0;
+       totalApostar=0.0;
+       suma=0;
+       gano=0;
+       perdio=0;
+       saldoActual=0;
+   }
+   public Dados( double si, double ta)
+   {
+       num1=0;
+       num2=0;
+       saldoInicial=si;
+       totalApostar=ta;
+       suma=0;
+       gano=0;
+       perdio=0;
+       saldoActual=0;
+   }
+   
+   //SET PARA ENTRADAD DE DATOS
+    public void setSaldoInicial(double si)
+    {
+        saldoInicial=si;
+    }
+    public void setTotalApostar(double ta)
+    {
+        totalApostar=ta;
+    }
+
+   //SALIDA DE DATOS GET
+   public int getNum1()
+   {
+       return num1;
+   }
+   public int getNum2()
+   {
+       return num2;
+   }
+   public double getSaldoInicial()
+    {
+        return saldoInicial;
+    }
+    public double getTotalApostar()
+    {
+        return totalApostar;
+    }
+    public int getSuma()
+    {
+        return suma;
+    }
+    public double getGano()
+    {
+        return gano;
+    }
+    public double getPerdio()
+    {
+        return perdio;
+    }
+    public double getSaldoActual()
+    {
+        return saldoActual;
+    }
+   
+   //OBTENER VALORES VÁLIDOS PARA EL DADO 1
+    public int lanzarDado1()
+    {
+    while((num1==0) || (num1>6))
+        {
+        num1=(int)(Math.random()*10);
+        System.out.println("número:  " +num1);
+        }
+    return num1;
+    }
+    //OBTENER VALORES VÁLIDOS PARA EL DADO 2
+    public int lanzarDado2()
+    {
+    while((num2==0) || (num2>6))
+        {
+        num2=(int)(Math.random()*10);
+        System.out.println("número:  " +num2);
+        }
+    return num2;
+    }
+    
+    //MÉTODO CALCULAR EL SALDO ACTUAL
+    public double calcularSA()
+    {
+        saldoActual=saldoInicial-totalApostar;
+        suma=num1+num2;
+        System.out.println("suma:  "+suma);
+        if(suma==7)
+        {
+            gano=totalApostar*2;
+            saldoActual=saldoActual+gano;
+            System.out.println("ganoo "+gano);
+            JOptionPane.showMessageDialog(null,"La suma fue "+suma+"\nFelicidades ganaste "+gano);
+            JOptionPane.showMessageDialog(null,"Su saldo actual es "+saldoActual);
+        }
+        else
+        {
+            perdio=totalApostar;
+            System.out.println("perdioo "+perdio);
+            JOptionPane.showMessageDialog(null,"La suma fue "+suma+"\nLo sentimos perdió "+perdio);
+            JOptionPane.showMessageDialog(null,"Su saldo actual es "+saldoActual);
+        }
+        
+        return saldoActual;
+    }
